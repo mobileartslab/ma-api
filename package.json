@@ -1,7 +1,7 @@
 {
-  "name": "turing-studio-backend-instance",
+  "name": "ma-api",
   "version": "1.0.0",
-  "description": "Node server for Turing Studio backend instance",
+  "description": "Node server for Mobile Arts apis",
   "scripts": {
     "test": "echo \"We don't need no stinkin' tests.\" && exit 0",
     "start-local": "export NODE_ENV=local && node_modules/.bin/nodemon app/server.js",
@@ -22,15 +22,15 @@
   "_moduleAliasIgnoreWarning": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wdeanmedical/wdean-form-server.git"
+    "url": "git+https://github.com:mobileartslab/ma-api.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wdeanmedical/wdean-form-server/issues"
+    "url": "https://github.com/mobileartslab/ma-api/issues"
   },
-  "homepage": "https://github.com/wdeanmedical/wdean-form-server#readme",
+  "homepage": "https://github.com/mobileartslab/ma-api#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
