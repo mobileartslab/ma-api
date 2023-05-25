@@ -83,6 +83,10 @@ const selectForms = args => {
   return `SELECT id, name FROM form_instance WHERE app_id = ${args[0]}`
 }
 
+const login = args => {
+  return `SELECT id, name FROM form_instance WHERE username = ${args[0]} and password = ${args[1]}`
+}
+
 const deleteMember = args => {
   return `
     UPDATE company_user
@@ -94,6 +98,7 @@ const deleteMember = args => {
 }
 
 const config = {
+  ['/public/login']: { POST: login },
   ['/public/getForm']: { GET: selectForm },
   ['/public/getScreen']: { GET: selectScreen },
   ['/public/getApp']: { GET: selectApp },

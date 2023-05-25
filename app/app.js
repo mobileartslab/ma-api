@@ -20,6 +20,7 @@ router.get('/public/getAppScreens', controller.main)
 router.get('/public/getForm', controller.main)
 router.get('/public/getFormFile', controller.main)
 router.get('/public/getForms', controller.main)
+router.post('/public/login', controller.main)
 router.get('/public/getScreens', controller.main)
 router.get('/public/testApi', controller.main)
 
