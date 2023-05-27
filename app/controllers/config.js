@@ -85,9 +85,9 @@ const config = {
   },
   ['/public/login']: {
     POST: async (req, res) => {
-      const {user, password} = req.body.data;
-      console.log('READING POST - req: ', req.body.data)
-      sendResponse(res, await runStatement(res, req.conn, getStatement(req, [user, password])))
+      console.log('READING POST - req: ', req.body)
+      const {username, password} = req.body;
+      sendResponse(res, await runStatement(res, req.conn, getStatement(req, [username, password])))
       // res.json({ data: body })
     },
   },
