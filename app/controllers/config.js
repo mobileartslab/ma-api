@@ -1,7 +1,6 @@
 const fs = require('fs');
 const { exec } = require('child_process');
 const { isObject } = require('@util/constants')
-const testForm = require('@data/fields.json')
 const { runStatement } = require('@persistence/sql/runStatement')
 const { getStatement } = require('@persistence/sql/config')
 
@@ -32,11 +31,6 @@ const config = {
   ['/public/testApi']: {
     GET: (req, res) => {
       res.json({ message: 'testing' })
-    },
-  },
-  ['/public/getFormFile']: {
-    GET: (req, res) => {
-      res.json({ form: testForm })
     },
   },
   ['/public/getForm']: {
@@ -81,6 +75,27 @@ const config = {
     GET: async (req, res) => {
       const id = '1'
       sendResponse(res, await runStatement(res, req.conn, getStatement(req, [id])))
+    },
+  },
+  ['/public/login']: {
+    POST: async (req, res) => {
+      console.log('READING POST - req: ', req.body)
+      const {username, password} = req.body;
+      const result = await runStatement(res, req.conn, getStatement(req, [username, password]))
+      console.log('RESULT', result)
+      console.log('RESULT LENGTH', result.length)
+
+      let user;
+
+      if (result.length > 0) {
+        user = result[0]
+        user.authStatus = STATUS_AUTHENTICATED
+      }
+      else {
+        user = { authStatus: STATUS_NOT_FOUND}
+      }
+
+      sendResponse(res, user)
     },
   },
   ['/public/publish']: {

@@ -17,6 +17,7 @@ const config = {
   ['/public/getScreens']: { GET: undefined },
   ['/public/getForms']: { GET: undefined },
   ['/public/getFormFile']: { GET: undefined },
+  ['/public/login']: { GET: undefined },
   ['/public/publish']: { PUT: undefined },
 }
 
