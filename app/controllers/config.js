@@ -83,9 +83,18 @@ const config = {
       const {username, password} = req.body;
       const result = await runStatement(res, req.conn, getStatement(req, [username, password]))
       console.log('RESULT', result)
-      const user = result[0]
-      user.authStatus = STATUS_AUTHENTICATED
-      console.log('PROCESSED RESULT', user)
+      console.log('RESULT LENGTH', result.length)
+
+      let user;
+
+      if (result.length > 0) {
+        user = result[0]
+        user.authStatus = STATUS_AUTHENTICATED
+      }
+      else {
+        user = { authStatus: STATUS_NOT_FOUND}
+      }
+
       sendResponse(res, user)
     },
   },
