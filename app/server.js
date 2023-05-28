@@ -2,6 +2,8 @@
 // Get environment variables
 require('../config/environments')
 
+require('module-alias/register')
+
 // get dependencies
 const fs = require('fs')
 const { logger } = require('@util/logger')
