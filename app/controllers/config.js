@@ -1,4 +1,5 @@
 const fs = require('fs');
+const bcrypt = require("bcrypt")
 const { exec } = require('child_process');
 const { isObject } = require('@util/constants')
 const { runStatement } = require('@persistence/sql/runStatement')
@@ -6,6 +7,17 @@ const { getStatement } = require('@persistence/sql/config')
 
 // HELPERS
 const { logAction } = require('./helper')
+
+async function hashPassword(plaintextPassword) {
+  const hash = await bcrypt.hash(plaintextPassword, salt)
+  // Store hash in the database
+}
+
+// compare password
+async function comparePassword(plaintextPassword, hash) {
+  const result = await bcrypt.compare(plaintextPassword, hash)
+  return result
+}
 
 const getProcessor = req => {
   const { method } = req
@@ -81,15 +93,21 @@ const config = {
     POST: async (req, res) => {
       console.log('READING POST - req: ', req.body)
       const {username, password} = req.body;
-      const result = await runStatement(res, req.conn, getStatement(req, [username, password]))
-      console.log('RESULT', result)
-      console.log('RESULT LENGTH', result.length)
+
+      const result = await runStatement(res, req.conn, getStatement(req, [username]))
 
       let user;
 
       if (result.length > 0) {
         user = result[0]
-        user.authStatus = STATUS_AUTHENTICATED
+        const encryptedPassword = await bcrypt.hash(password, user.salt)
+        console.log(`comparing ${encryptedPassword} to ${user.password}`)
+        if (encryptedPassword == user.password) {
+          user.authStatus = STATUS_AUTHENTICATED
+        }
+        else {
+          user.authStatus = STATUS_INVALID_PASSWORD
+        }
       }
       else {
         user = { authStatus: STATUS_NOT_FOUND}
