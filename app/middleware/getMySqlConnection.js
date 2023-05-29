@@ -2,15 +2,7 @@ const db = require('@util/db')
 const { logger } = require('@util/logger')
 const { DB_CONNECTION_ERROR } = require('@errors/errorMessages')
 
-/**
- * getMySqlConnection
- *
- * @param {object} req
- * @param {object} res
- * @param {function} next
- */
 const getMySqlConnection = async (req, res, next) => {
-  // Get DB Connection
   try {
     req.conn = await db.get(db.SQL_CONNECTION)
     next()

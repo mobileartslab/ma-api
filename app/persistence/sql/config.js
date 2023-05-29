@@ -84,7 +84,7 @@ const selectForms = args => {
 }
 
 const login = args => {
-  return `SELECT id, username, password FROM user WHERE username = ${args[0]} and password = ${args[1]}`
+  return `SELECT id, username, salt, password FROM user WHERE username = ${args[0]}`
 }
 
 const deleteMember = args => {
