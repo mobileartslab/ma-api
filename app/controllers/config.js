@@ -35,6 +35,7 @@ const sendParsedResponse = (res, result) => {
 
 const sendResponse = (res, result) => {
   if (result) {
+    console.log('SENDING RESPONSE:', result)
     res.json({ error: null, result })
   }
 }
