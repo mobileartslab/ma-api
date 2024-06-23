@@ -78,6 +78,12 @@ const config = {
       sendResponse(res, await runStatement(res, req.conn, getStatement(req, [appId])))
     },
   },
+  ['/public/getInventory']: {
+    GET: async (req, res) => {
+      console.log('IN getInventory()')
+      sendResponse(res, await runStatement(res, req.conn, getStatement(req)))
+    },
+  },
   ['/public/getScreens']: {
     GET: async (req, res) => {
       const id = '1'
@@ -102,6 +108,8 @@ const config = {
       if (result.length > 0) {
         user = result[0]
         const encryptedPassword = await bcrypt.hash(password, user.salt)
+        const x = await bcrypt.hash('password', '$2b$10$tgkavV1jNH1Qhv6k.ebHoO')
+        console.log('generated: ' + x)
         console.log(`comparing ${encryptedPassword} to ${user.password}`)
         if (encryptedPassword == user.password) {
           user.authStatus = STATUS_AUTHENTICATED

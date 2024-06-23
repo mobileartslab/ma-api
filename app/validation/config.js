@@ -14,6 +14,7 @@ const config = {
   ['/public/getApp']: { GET: undefined },
   ['/public/getApps']: { GET: undefined },
   ['/public/getAppScreens']: { GET: undefined },
+  ['/public/getInventory']: { GET: undefined },
   ['/public/getScreens']: { GET: undefined },
   ['/public/getForms']: { GET: undefined },
   ['/public/getFormFile']: { GET: undefined },

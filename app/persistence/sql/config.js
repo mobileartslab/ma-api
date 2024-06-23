@@ -11,6 +11,10 @@ const getStatement = (req, args, updateList) => {
   return statement
 }
 
+const login = args => {
+  return `SELECT id, username, salt, password FROM user WHERE username = ${args[0]}`
+}
+
 const selectCompany = args => {
   return `
     SELECT 
@@ -19,16 +23,6 @@ const selectCompany = args => {
     hqCity, hqState, hqZipCode, companyID, memberSince,
     facebookUrl, linkedinUrl, twitterUrl, instagramUrl
     FROM company
-    WHERE companyID = ${args[0]}
-  `
-}
-
-const updateCompany = (args, updateList) => {
-  return `
-    UPDATE company
-    SET 
-      updatedAt = ROUND(UNIX_TIMESTAMP(UTC_TIME(4)) * 1000),
-      ${updateList}
     WHERE companyID = ${args[0]}
   `
 }
@@ -83,8 +77,19 @@ const selectForms = args => {
   return `SELECT id, name FROM form_instance WHERE app_id = ${args[0]}`
 }
 
-const login = args => {
-  return `SELECT id, username, salt, password FROM user WHERE username = ${args[0]}`
+const selectInventory = args => {
+  console.log('in selectInventory', args)
+  return `SELECT * FROM inventory`
+}
+
+const updateCompany = (args, updateList) => {
+  return `
+    UPDATE company
+    SET 
+      updatedAt = ROUND(UNIX_TIMESTAMP(UTC_TIME(4)) * 1000),
+      ${updateList}
+    WHERE companyID = ${args[0]}
+  `
 }
 
 const deleteMember = args => {
@@ -106,6 +111,7 @@ const config = {
   ['/public/getAppScreens']: { GET: selectAppScreens },
   ['/public/getScreens']: { GET: selectScreens },
   ['/public/getForms']: { GET: selectForms },
+  ['/public/getInventory']: { GET: selectInventory },
 }
 
 module.exports = { getStatement }

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.42, for osx10.18 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.44, for osx10.19 (x86_64)
 --
 -- Host: localhost    Database: ma_api
 -- ------------------------------------------------------
--- Server version	8.0.33
+-- Server version	8.0.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -65,6 +65,34 @@ INSERT INTO `form_instance` VALUES (1,'Suggestion','[\n  {\n    \"id\": 1,\n    
 UNLOCK TABLES;
 
 --
+-- Table structure for table `inventory`
+--
+
+DROP TABLE IF EXISTS `inventory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `inventory` (
+  `id` int NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `headline` varchar(255) DEFAULT NULL,
+  `subheadline` varchar(255) DEFAULT NULL,
+  `content` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `inventory`
+--
+
+LOCK TABLES `inventory` WRITE;
+/*!40000 ALTER TABLE `inventory` DISABLE KEYS */;
+INSERT INTO `inventory` VALUES (1,'lp1.jpg','GIBSON','Les Paul Custom - Ebony with Ebony Fingerboard','The One, the Only Les Paul Custom','With its sonic punch, fluid playability, and classic \"tuxedo\" appointments, the Les Paul Custom is equal parts elegance and brute strength. Fitted with a matched 490/498 humbucker set that takes you from mellow jazz tones to full shred with a pinky twist, this majestic beast is ultra-responsive to your touch. Its fast-action neck, smooth-as-silk ebony fingerboard, and medium jumbo frets facilitate the speedy, dexterous fretwork we’ve heard across prog, fusion, and hard rock genres from guitar virtuosos like Robert Fripp, Al Di Meola, and Zakk Wylde. Gibson’s Custom Shop luthiers selected premium mahogany for the body and capped it with a 2-piece carved maple top — a classic recipe for rich, sustaining, articulate tone that’ll slice right through the mix.'),(2,'lp2.jpg','GIBSON','Slash Les Paul Standard Electric Guitar - November Burst','Whet Your Appetite with Slash\'s Signature Gibson Les Paul Standard','Part of Gibson’s Slash Collection, the Slash Les Paul Standard is a solidbody electric guitar that’s worthy of its namesake. Inject your playing with incredible warmth and sustain, thanks to a resonant solid mahogany body, that’s accented by an eye-catching AAA figured maple top. Enjoy unbelievable playability, courtesy of a comfortable rosewood-capped \"C\"-shaped neck. And when you plug into your British stack, you’ll experience a mid-forward sustain and crunch that every Slash fan is sure to recognize, by virtue of dual Custom Burstbucker Alnico II pickups. The Slash Les Paul Standard sports handwired electronics, color-coordinated hardware, and a bevy of special Slash-approved touches.'),(3,'lp3.jpg','GIBSON','Les Paul Standard \'60s Electric Guitar - Iced Tea','Burstbucker pickups deliver vintage PAF ton','When it comes to capturing vintage Patent Applied For (PAF) humbucker tone, nothing beats the sound of this Les Paul Standard 60\'s Burstbucker pickups. These magnets — along with period-correct unmatched windings on the bobbins — capture the subtle historical variations in true humbucker tone. Plug into your favorite amp, and experience smooth low-end response, complex midrange crunch, and sweet-sounding highs. These pickups sound great clean or they can be used to push your amp into overdrive for the legendary fat, snarling tone you can only get with a humbucker. Under the hood, the control assembly is handwired with matched potentiometers and Orange Drop capacitors, ensuring that you’ll hear the mellifluous voice of your Les Paul Standard ’60s in all its glory, even when you back down your volume. It\'s all driven by a nimble 3-way toggle switch for lightning-fast access to those glorious heritage tones.'),(4,'lp4.jpg','GIBSON','Les Paul Standard \'50s Electric Guitar - Gold Top','Les Paul Standard \'50s: Born to Roc','From its carved maple top to its stockpile of premium features, the Gibson Les Paul Standard ’50s is ready to rock. Burstbucker pickups and handwired electronics deliver a massive tone arsenal. And you’ll enjoy effortless playability courtesy of a satisfying vintage ’50s profile neck and fast-action rosewood fingerboard. If you’ve been wanting a modern Les Paul with a chunky neck feel and premium appointments, Sweetwater has your axe. The Gibson Les Paul Standard \'50s is the guitar you’ve been waiting for.'),(5,'lp5.jpg','GIBSON','Les Paul Standard \'60s Electric Guitar - Bourbon Burst','Les Paul Standard \'60s Electric Guitar - Bourbon Burst','From its carved maple top to its stockpile of premium features, the Gibson Les Paul Standard ’60s is ready to rock. 60s Burstbucker pickups and handwired electronics deliver a massive tone arsenal. And you’ll enjoy effortless playability courtesy of a fast SlimTaper-profile neck and silky-smooth rosewood fingerboard with Plek’d frets. If you’ve been wanting a modern Les Paul with a slinky ’60s feel and premium appointments, Sweetwater has your axe. The Gibson Les Paul Standard ’60s is the guitar you’ve been waiting for.'),(6,'lp6.jpg','EPIPHONE','Les Paul Classic Electric Guitar - Heritage Cherry Sunburst','Classic Looks and a Killer Sound','Modeled after Les Paul Standards produced in the late 1950s, the Epiphone Les Paul Classic has timeless visual appeal. And its modern appointments contribute to a stellar sounding LP that plays great but won’t break the bank. Guitarists at Sweetwater were impressed by the Epiphone Les Paul Classic’s balanced tone that evokes the sound and vibe of countless classic and modern rock hits. And, they were blown away by the super-hot Alnico Classic PRO pickups and the premium hardware and electronics package that make this guitar a total tone monster. For a legendary look and a killer sound, wrap your hands around the Les Paul Classic from Epiphone.'),(7,'lp7.jpg','GIBSON','Les Paul Classic: Iconic Tone and Uncompromising Playability','Les Paul Classic: Iconic Tone and Uncompromising Playability','Strap on Gibson\'s Les Paul Classic, and you\'ll experience iconic tone and uncompromising playability. A time-tested combination of maple and mahogany serves up the tone that’s fueled a million rock anthems, while 60s Burstbucker pickups inject your playing with loads of midrange muscle and sizzling overtones. You also get coil tapping, phase reversal, and pure bypass options for an endless variety of tonal textures. As for playing comfort, the Les Paul Classic feels as amazing as it sounds, thanks to a SlimTaper neck and easy-playing rosewood fingerboard. The Les Paul Classic includes a self-lubricating Graph Tech nut, Tune-o-matic bridge, vintage-style Grover Rotomatic tuners, and gold top hat knobs.'),(8,'lp8.jpg','GIBSON','Les Paul Studio - Ebony','Weight-relieved, Coil-tapped Gibson Les Paul Studio with Endless Player Potential','The Gibson Les Paul Studio is celebrated by live performers and session players alike. The modern Studio covers even wider sonic territory with its coil-tapped 490R/498T humbucking pickups. This combination unlocks plenty of creative textures to flesh out musical ideas, from classic cleans and modern crunch to single-coil cluck. The Gibson Les Paul Studio also benefits from an Ultra-modern weight-relieved body; this reduction of more than a pound in weight provides extra comfort for extended sessions and performances. A feature your fingers will thank you for is the SlimTaper mahogany guitar neck, which re-creates the speed and playability some of the \'60s Les Pauls are known for. Dependable Grover Rotomatic tuners keep this Gibson Les Paul Studio pitch-perfect and ready to rock.');
+/*!40000 ALTER TABLE `inventory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `screen_instance`
 --
 
@@ -112,7 +140,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'nick@foo.com','$2b$10$tgkavV1jNH1Qhv6k.ebHoObsN8HEvBbvHIo3o9/Qyy/5mWHXZ3a1u','$2b$10$tgkavV1jNH1Qhv6k.ebHoO');
+INSERT INTO `user` VALUES (1,'nick@foo.com','$2b$10$tgkavV1jNH1Qhv6k.ebHoOKsOJ47VXItD0xCGIU.fwqvMpKX8sBNO','$2b$10$tgkavV1jNH1Qhv6k.ebHoO');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -125,4 +153,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-29  4:43:27
+-- Dump completed on 2024-06-22 23:01:30
