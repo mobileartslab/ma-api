@@ -28,6 +28,8 @@ router.get('/public/testApi', controller.main)
 // Start express app
 const app = express()
 
+app.use(express.static('public'))
+
 // Log requests with morgan, streamed to winston for writing log files
 if (process.env.NODE_ENV === 'local') {
   app.use(morgan('dev', { stream: logger.stream }))
